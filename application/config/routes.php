@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //Routes for users
 $route['users'] = 'users/show';
 $route['users/show'] = 'users/show';
-$route['users/my-profile'] = 'users/myprofile'; //to update user profile
+// $route['users/my-profile'] = 'users/myprofile'; //to update user profile
 $route['users/my-profile-edit'] = 'users/edit'; //to update user profile
 
 //Routes for profiles
@@ -21,7 +21,7 @@ $route['posts/update'] = 'posts/update';
 $route['posts/(:any)'] = 'posts/view/$1';
 $route['posts'] = 'posts/index';
 
-$route['default_controller'] = 'pages/view';
+$route['default_controller'] = 'users/login';
 
 $route['categories'] = 'categories/index';
 $route['categories/create'] = 'categories/create';

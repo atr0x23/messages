@@ -12,6 +12,13 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+
 	</head>
 	<body>
 
@@ -26,7 +33,7 @@
 
       <?php if($this->session->userdata('logged_in')) : ?>
           <li class="nav-item">
-            <a class="nav-link active" href="<?php echo base_url(); ?>users/myprofile">Profile<span class="visually-hidden">(current)</span></a>
+            <a class="nav-link active" href="<?php echo base_url(); ?>users/my-profile-edit">Profile<span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>messages/create">New message</a>
@@ -73,6 +80,26 @@
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
       <?php endif; ?>
 
+      <?php if($this->session->flashdata('user_loggedin')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
+      <?php endif; ?>
+
+       <?php if($this->session->flashdata('user_loggedout')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('user_updated')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_updated').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('login_failed')): ?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('message_submited')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('message_submited').'</p>'; ?>
+      <?php endif; ?>
+
       <?php if($this->session->flashdata('post_created')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_created').'</p>'; ?>
       <?php endif; ?>
@@ -81,24 +108,12 @@
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_updated').'</p>'; ?>
       <?php endif; ?>
 
-      <?php if($this->session->flashdata('category_created')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_created').'</p>'; ?>
-      <?php endif; ?>
-
       <?php if($this->session->flashdata('post_deleted')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_deleted').'</p>'; ?>
       <?php endif; ?>
 
-      <?php if($this->session->flashdata('login_failed')): ?>
-        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
-      <?php endif; ?>
-
-      <?php if($this->session->flashdata('user_loggedin')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedin').'</p>'; ?>
-      <?php endif; ?>
-
-       <?php if($this->session->flashdata('user_loggedout')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
+      <?php if($this->session->flashdata('category_created')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_created').'</p>'; ?>
       <?php endif; ?>
 
       <?php if($this->session->flashdata('category_deleted')): ?>

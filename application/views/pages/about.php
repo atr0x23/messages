@@ -1,2 +1,2 @@
 <h2><?= $title ?></h2>
-<p>This is ciblog version 1.0</p>
+<p>Ooops Sorry! :( Something went wrong with the submition, check your fields and try again!</p>

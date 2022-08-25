@@ -28,6 +28,8 @@
 				$this->load->view('templates/footer');
 		} else{
 			$this->message_model->create_message();
+			// Set message
+			$this->session->set_flashdata('message_submited', 'Your message has been submited');
 			//after the create go to messages
 			redirect('messages');
 

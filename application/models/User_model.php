@@ -62,14 +62,14 @@
 		}
 
 		//Get by id
-		public function get_users_by_id(){
+		// public function get_users_by_id(){
 
-			$current_user = $this->session->userdata('user_id');
-			$query = $this->db->get_where('users', array('id' => $current_user)); 
-			return $query->result_array();
+		// 	$current_user = $this->session->userdata('user_id');
+		// 	$query = $this->db->get_where('users', array('id' => $current_user)); 
+		// 	return $query->result_array();
 
 
-		}
+		// }
 
 		public function get_users_by_id_edit(){
 

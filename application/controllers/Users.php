@@ -23,7 +23,7 @@
 				// Set message
 				$this->session->set_flashdata('user_registered', 'You are now registered and can log in');
 
-				redirect('posts');
+				redirect('users/login');
 			}
 		}
 
@@ -61,7 +61,7 @@
 					// Set message
 					$this->session->set_flashdata('user_loggedin', 'You are now logged in');
 
-					redirect('posts');
+					redirect('messages/create');
 				} else {
 					// Set message
 					$this->session->set_flashdata('login_failed', 'Login is invalid');
@@ -122,21 +122,21 @@
 		}
 
 		//show single user
-		public function myprofile(){
+		// public function myprofile(){
 
-			// Check login
-			if(!$this->session->userdata('logged_in')){
-				redirect('users/login');
-			}
+		// 	// Check login
+		// 	if(!$this->session->userdata('logged_in')){
+		// 		redirect('users/login');
+		// 	}
 
-			$data['title'] = 'My profile';
+		// 	$data['title'] = 'My profile';
 
-			$data['users'] = $this->user_model->get_users_by_id();
+		// 	$data['users'] = $this->user_model->get_users_by_id();
 
-			$this->load->view('templates/header');
-			$this->load->view('users/show', $data);
-			$this->load->view('templates/footer');
-		}
+		// 	$this->load->view('templates/header');
+		// 	$this->load->view('users/show', $data);
+		// 	$this->load->view('templates/footer');
+		// }
 
 		public function edit(){
 			// Check login
@@ -166,7 +166,7 @@
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');
-				$this->load->view('users/edit/my-profile-edit', $data);
+				$this->load->view('users/my-profile-edit', $data);
 				$this->load->view('templates/footer');
 			} else {
 
@@ -175,7 +175,7 @@
 			// Set message
 			$this->session->set_flashdata('user_updated', 'Your profile has been updated');
 
-			redirect('users/show');
+			redirect('users/my-profile-edit');
 			}
 		}
 

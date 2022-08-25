@@ -25,7 +25,7 @@
                "<td>" . $user['register_date'] . "</td>" .
                "<td> <a type='button' class='btn btn-primary' href='#'>Messages</a> </td>" .
                "<td> <a type='button' href='' class='btn btn-success'>Edit</a> </td>" .
-               "<td> <a type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal' href='" . base_url() . "users/delete/" . $user['id'] ."'>Delete</a> </td" .  
+               "<td> <a type='button' class='btn btn-danger' href='" . base_url() . "users/delete/" . $user['id'] ."'>Delete</a> </td>" .  
                "</tr>"; ?>
 
     <?php endforeach; ?>
@@ -35,32 +35,30 @@
 
 
   <!-- modal for deletions -->
-        <div class="modal" id="myModal">
+  <!-- <div class="modal" id="myModal">
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                <!-- Modal Header -->
+                <!- Modal Header --
                 <div class="modal-header">
                     <h4 class="modal-title">Modal Heading</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
-                <!-- Modal body -->
+                <!- Modal body --
                 <div class="modal-body">
                     Are you sure? This acction can't be undone!
                 </div>
 
-                <!-- Modal footer -->
+                <!- Modal footer --
                 <div class="modal-footer">
                     <a type="button" class="btn btn-danger" data-dismiss="modal">yes</a>
                 </div>
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- modal to alert admin before delete START-->
-
-<!-- modal to alert admin before delete END -->
+<!-- modal delete END -->
 
   </div>
