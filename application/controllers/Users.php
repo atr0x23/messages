@@ -178,4 +178,11 @@
 			redirect('users/show');
 			}
 		}
+
+		public function delete($id){
+
+			$this->user_model->delete_user($id);
+			redirect('users');
+
+		}
 }

@@ -95,4 +95,12 @@
 			return $this->db->update('users', $data);
 		}
 
+		public function delete_user($id){
+
+			$this->db->where('id', $id);
+			$this->db->delete('users');
+			return true;
+
+		}
+
 	}
