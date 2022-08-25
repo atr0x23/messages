@@ -18,14 +18,14 @@
 				<label>Username</label>
 				<input type="text" class="form-control" name="username" value="<?php echo $trela['username']; ?>" placeholder="Username" required autofocus>
 			</div>
-			<!-- <div class="form-group">
+			<div class="form-group">
 				<label>Password</label>
 				<input type="password" class="form-control" name="password" placeholder="Password" autocomplete="off" required autofocus>
 			</div>
 			<div class="form-group">
 				<label>Confirm Password</label>
 				<input type="password" class="form-control" name="password2" placeholder="Confirm Password" required autofocus>
-			</div> -->
+			</div>
 			<button type="submit" class="btn btn-primary btn-block">Submit</button>
 		</div>
 	</div>

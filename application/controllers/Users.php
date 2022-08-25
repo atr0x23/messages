@@ -146,7 +146,7 @@
 
 			$data['user'] = $this->user_model->get_users_by_id_edit();
 
-			$data['title'] = 'Edit Post';
+			$data['title'] = 'Edit Profile';
 
 			$this->load->view('templates/header');
 			$this->load->view('users/my-profile-edit', $data);
@@ -155,16 +155,27 @@
 
 		// Store into database the new infos of user
 		public function update(){
-			// Check login
-			if(!$this->session->userdata('logged_in')){
-				redirect('users/login');
-			}
 
-			$this->user_model->update_user();
+			$data['title'] = 'make the update';
+
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
+			$this->form_validation->set_rules('username', 'Username', 'required|callback_check_username_exists');
+			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('password2', 'Confirm Password', 'matches[password]');
+
+			if($this->form_validation->run() === FALSE){
+				$this->load->view('templates/header');
+				$this->load->view('users/edit/my-profile-edit', $data);
+				$this->load->view('templates/footer');
+			} else {
+
+			$this->user_model->update_user($enc_password);
 
 			// Set message
 			$this->session->set_flashdata('user_updated', 'Your profile has been updated');
 
 			redirect('users/show');
+			}
 		}
 }
