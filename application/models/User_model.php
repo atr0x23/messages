@@ -59,7 +59,37 @@
 	
 				$query = $this->db->get('users'); 
 				return $query->result_array();
+		}
 
+		//Get by id
+		public function get_users_by_id(){
+
+			$current_user = $this->session->userdata('user_id');
+			$query = $this->db->get_where('users', array('id' => $current_user)); 
+			return $query->result_array();
+
+
+		}
+
+		public function get_users_by_id_edit(){
+
+			$current_user = $this->session->userdata('user_id');
+			$query = $this->db->get_where('users', array('id' => $current_user)); 
+			return $query->result_array();
+
+		}
+
+		public function update_user(){
+
+			$data = array(
+				'name' => $this->input->post('name'),
+				'email' => $this->input->post('email'),
+				'username' => $this->input->post('username')
+				//'password' => $this->input->post('category_id')
+			);
+
+			$this->db->where('id', $this->input->post('id'));
+			return $this->db->update('users', $data);
 		}
 
 	}

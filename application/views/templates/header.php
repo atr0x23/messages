@@ -26,7 +26,7 @@
 
       <?php if($this->session->userdata('logged_in')) : ?>
           <li class="nav-item">
-            <a class="nav-link active" href="<?php echo base_url(); ?>profiles">Profile<span class="visually-hidden">(current)</span></a>
+            <a class="nav-link active" href="<?php echo base_url(); ?>users/myprofile">Profile<span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>messages/create">New message</a>

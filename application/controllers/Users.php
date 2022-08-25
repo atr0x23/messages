@@ -104,7 +104,7 @@
 			}
 		}
 
-		//show users
+		//show ALL users
 		public function show(){
 
 			// Check login
@@ -116,9 +116,55 @@
 
 			$data['users'] = $this->user_model->get_users();
 
+			$this->load->view('templates/header');
+			$this->load->view('users/show', $data);
+			$this->load->view('templates/footer');
+		}
+
+		//show single user
+		public function myprofile(){
+
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+
+			$data['title'] = 'My profile';
+
+			$data['users'] = $this->user_model->get_users_by_id();
 
 			$this->load->view('templates/header');
 			$this->load->view('users/show', $data);
 			$this->load->view('templates/footer');
 		}
-	}
+
+		public function edit(){
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+
+			$data['user'] = $this->user_model->get_users_by_id_edit();
+
+			$data['title'] = 'Edit Post';
+
+			$this->load->view('templates/header');
+			$this->load->view('users/my-profile-edit', $data);
+			$this->load->view('templates/footer');
+		}
+
+		// Store into database the new infos of user
+		public function update(){
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+
+			$this->user_model->update_user();
+
+			// Set message
+			$this->session->set_flashdata('user_updated', 'Your profile has been updated');
+
+			redirect('users/show');
+		}
+}
