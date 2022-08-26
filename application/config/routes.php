@@ -6,12 +6,14 @@ $route['users'] = 'users/show';
 $route['users/show'] = 'users/show';
 // $route['users/my-profile'] = 'users/myprofile'; //to update user profile
 $route['users/my-profile-edit'] = 'users/edit'; //to update user profile
+$route['users/edit-by-admin/(:any)'] = 'users/edit_specific';
 
 //Routes for profiles
 $route['profiles'] = 
 
 //Routes for the messages
-$route['messages'] = 'messages/index';
+$route['messages'] = 'messages/index'; //shows all messages
+$route['messages/mymessages'] = 'messages/mymessages'; //shows only the messages of loged in user
 $route['messages/create'] = 'messages/create';
 
 //Routes for the posts

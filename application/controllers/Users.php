@@ -179,6 +179,55 @@
 			}
 		}
 
+		//for the admin user
+		public function edit_specific(){
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+
+			$data['user'] = $this->user_model->get_specific_user();
+
+			$data['title'] = 'Edit Specific Profile';
+
+			$specific_user = $this->uri->segment(3);
+
+			$this->load->view('templates/header');
+			$this->load->view('users/edit-by-admin', $data);
+			$this->load->view('templates/footer');
+		}
+
+		//for the admin user
+		public function update_specific(){
+
+						// Check login
+						if(!$this->session->userdata('logged_in')){
+							redirect('users/login');
+						}
+
+			$data['title'] = 'make the update';
+
+			$this->form_validation->set_rules('name', 'Name', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
+			$this->form_validation->set_rules('username', 'Username', 'required|callback_check_username_exists');
+			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('password2', 'Confirm Password', 'matches[password]');
+
+			if($this->form_validation->run() === FALSE){
+				$this->load->view('templates/header');
+				$this->load->view('users/edit-by-admin', $data);
+				$this->load->view('templates/footer');
+			} else {
+
+			$this->user_model->update_specific_user($enc_password);
+
+			// Set message
+			$this->session->set_flashdata('user_updated_byadmin', 'The selected profile has been updated');
+
+			redirect('users');
+			}
+		}
+
 		public function delete($id){
 
 			$this->user_model->delete_user($id);

@@ -24,8 +24,8 @@
                "<td>" . $user['username'] . "</td>" .
                "<td>" . $user['register_date'] . "</td>" .
                "<td> <a type='button' class='btn btn-primary' href='#'>Messages</a> </td>" .
-               "<td> <a type='button' href='' class='btn btn-success'>Edit</a> </td>" .
-               "<td> <a type='button' class='btn btn-danger' href='" . base_url() . "users/delete/" . $user['id'] ."'>Delete</a> </td>" .  
+               "<td> <a type='button' href='" . base_url() . "users/edit-by-admin/" . $user['id'] ."' class='btn btn-success'>Edit</a> </td>" .
+               "<td> <a type='button' data-toggle='modal' data-target='#confirm-delete' class='btn btn-danger' data-href='" . base_url() . "users/delete/" . $user['id'] ."'>Delete</a> </td>" .  
                "</tr>"; ?>
 
     <?php endforeach; ?>
@@ -35,30 +35,40 @@
 
 
   <!-- modal for deletions -->
-  <!-- <div class="modal" id="myModal">
-            <div class="modal-dialog">
-                <div class="modal-content">
 
-                <!- Modal Header --
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
                 <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Confirm Delete</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-
-                <!- Modal body --
+            
                 <div class="modal-body">
-                    Are you sure? This acction can't be undone!
+                    <p>You are about to delete this user, this procedure is irreversible.</p>
+                    <p>Do you want to proceed?</p>
+                    <!-- <p class="debug-url"></p> --> <!--for debug the deletion url-->
                 </div>
-
-                <!- Modal footer --
+                
                 <div class="modal-footer">
-                    <a type="button" class="btn btn-danger" data-dismiss="modal">yes</a>
-                </div>
-
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger btn-ok">Delete</a>
                 </div>
             </div>
-        </div> -->
+        </div>
+    </div>
 
 <!-- modal delete END -->
+
+<!-- the script modal for deletions -->
+    <script>
+        $('#confirm-delete').on('show.bs.modal', function(e) {
+            $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+            
+            $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
+    </script>
+
 
   </div>

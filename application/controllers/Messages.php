@@ -35,4 +35,17 @@
 
 		}
 		}
+
+		//view only the messages of loged in user
+		public function mymessages(){
+
+			$data['title'] = 'My Latest Messages';
+
+			$data['messages'] = $this->message_model->get_mymessages();
+
+			$this->load->view('templates/header');
+			$this->load->view('messages/mymessages', $data);
+			$this->load->view('templates/footer');
+		}
+
 	}

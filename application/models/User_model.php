@@ -61,6 +61,32 @@
 				return $query->result_array();
 		}
 
+		public function get_specific_user(){
+
+			$specific_user = $this->uri->segment(3);
+			$query = $this->db->get_where('users', array('id' => $specific_user)); 
+			return $query->result_array();
+
+		}
+
+		public function update_specific_user($enc_password){
+
+			// Encrypt password
+			$enc_password = md5($this->input->post('password'));
+
+			$data = array(
+				'name' => $this->input->post('name'),
+				'email' => $this->input->post('email'),
+				'username' => $this->input->post('username'),
+				'password' => $enc_password 
+			);
+
+			$specific_user = $this->uri->segment(3);
+
+			$this->db->where('id', $specific_user);
+			return $this->db->update('users', $data);
+		}
+
 		//Get by id
 		// public function get_users_by_id(){
 

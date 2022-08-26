@@ -92,6 +92,10 @@
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_updated').'</p>'; ?>
       <?php endif; ?>
 
+      <?php if($this->session->flashdata('user_updated_byadmin')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_updated_byadmin').'</p>'; ?>
+      <?php endif; ?>
+
       <?php if($this->session->flashdata('login_failed')): ?>
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
       <?php endif; ?>
