@@ -54,13 +54,15 @@
 			}
 		}
 
-		//Get all users
+		//Get all users (only available for admin)
 		public function get_users(){
 	
 				$query = $this->db->get('users'); 
 				return $query->result_array();
 		}
-
+	
+		
+		//loads the data in order to edit profile by the admin
 		public function get_specific_user(){
 
 			$specific_user = $this->uri->segment(3);
@@ -69,6 +71,7 @@
 
 		}
 
+		//update a users's profile as admin 
 		public function update_specific_user($enc_password){
 
 			$data = array(
@@ -78,22 +81,13 @@
 				'password' => $enc_password 
 			);
 
-			$specific_user = $this->uri->segment(3);
+			//$specific_user = $this->uri->segment(3);
 
-			$this->db->where('id', $specific_user);
+			$this->db->where('id', $this->uri->segment(3));
 			return $this->db->update('users', $data);
 		}
 
-		//Get by id
-		// public function get_users_by_id(){
-
-		// 	$current_user = $this->session->userdata('user_id');
-		// 	$query = $this->db->get_where('users', array('id' => $current_user)); 
-		// 	return $query->result_array();
-
-
-		// }
-
+		//loads the data in order to edit profile by the user himself
 		public function get_users_by_id_edit(){
 
 			$current_user = $this->session->userdata('user_id');
@@ -102,6 +96,7 @@
 
 		}
 
+		//update users's profile by the user himself
 		public function update_user($enc_password){
 
 			$data = array(
@@ -115,6 +110,7 @@
 			return $this->db->update('users', $data);
 		}
 
+		// delete user (only available for admin)
 		public function delete_user($id){
 
 			$this->db->where('id', $id);

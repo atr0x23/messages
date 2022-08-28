@@ -38,6 +38,11 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>messages/create">New message</a>
           </li>
+          <?php if($this->session->userdata('user_id') == 14) : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url(); ?>users">Users</a>
+          </li>
+          <?php endif; ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url(); ?>messages/mymessages">Message-History</a>
           </li>

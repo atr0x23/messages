@@ -1,5 +1,7 @@
 <?php
 	class Users extends CI_Controller{
+
+
 		// Register user
 		public function register(){
 			$data['title'] = 'Sign Up';
@@ -71,6 +73,18 @@
 			}
 		}
 
+		//Forgot password feature
+		public function password_reset(){
+
+			$data['title'] = 'Reset your password';			
+
+			$this->load->view('templates/header');
+			$this->load->view('users/password-reset', $data);
+			$this->load->view('templates/footer');
+		}
+
+
+
 		// Log user out
 		public function logout(){
 			// Unset user data
@@ -108,10 +122,9 @@
 		public function show(){
 
 			// Check login
-			// if(!$this->session->userdata('logged_in')){
-			// 	redirect('users/login');
-			// }
+			if($this->session->userdata('logged_in') && $this->session->userdata('user_id') == 14){
 
+			//since passes the check can go on and show all users feature		
 			$data['title'] = 'Registered Users';
 
 			$data['users'] = $this->user_model->get_users();
@@ -119,24 +132,12 @@
 			$this->load->view('templates/header');
 			$this->load->view('users/show', $data);
 			$this->load->view('templates/footer');
+
+		}// end if
+		
+		else{redirect('users/login');}
+
 		}
-
-		//show single user
-		// public function myprofile(){
-
-		// 	// Check login
-		// 	if(!$this->session->userdata('logged_in')){
-		// 		redirect('users/login');
-		// 	}
-
-		// 	$data['title'] = 'My profile';
-
-		// 	$data['users'] = $this->user_model->get_users_by_id();
-
-		// 	$this->load->view('templates/header');
-		// 	$this->load->view('users/show', $data);
-		// 	$this->load->view('templates/footer');
-		// }
 
 		public function edit(){
 			// Check login
@@ -193,7 +194,7 @@
 
 			$data['title'] = 'Edit Specific Profile';
 
-			$specific_user = $this->uri->segment(3);
+			//$specific_user = $this->uri->segment(3);
 
 			$this->load->view('templates/header');
 			$this->load->view('users/edit-by-admin', $data);
