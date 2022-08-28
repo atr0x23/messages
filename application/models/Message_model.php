@@ -26,6 +26,15 @@
             return $query->result_array(); 
         }
 
+        public function get_mymessages_admin(){
+
+            $selected_user = $this->uri->segment(3);
+
+            $this->db->order_by('id', 'DESC');
+			$query = $this->db->get_where('messages', array('user_id' => $selected_user));
+            return $query->result_array(); 
+        }
+
 
         public function create_message(){
 

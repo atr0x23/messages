@@ -64,4 +64,22 @@
 			$this->load->view('templates/footer');
 		}
 
+		//view the messages of logged-in user  AS ADMIN !
+		public function mymessagesadmin(){
+
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
+			$data['title'] = 'My Latest Messages (admin view)';
+
+			$data['messages'] = $this->message_model->get_mymessages_admin();
+
+			//if(!empty($data['messages'])){ echo "not empty";} else{echo "it is empty";}
+
+			$this->load->view('templates/header');
+			$this->load->view('messages/mymessages-adminview', $data);
+			$this->load->view('templates/footer');
+		}
+
 	}
