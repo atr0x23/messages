@@ -9,8 +9,7 @@
 				<input type="text" class="form-control" name="name" placeholder="Name">
 			</div>
 			<div class="form-group">
-				<label>Zipcode</label>
-				<input type="text" class="form-control" name="zipcode" placeholder="Zipcode">
+				<input type="hidden" value="0" class="form-control" name="is_admin">
 			</div>
 			<div class="form-group">
 				<label>Email</label>

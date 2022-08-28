@@ -23,7 +23,7 @@
                "<td>" . $user['email'] . "</td>" .
                "<td>" . $user['username'] . "</td>" .
                "<td>" . $user['register_date'] . "</td>" .
-               "<td> <a type='button' class='btn btn-primary' href='#'>Messages</a> </td>" .
+               "<td> <a type='button' class='btn btn-primary' href='" . base_url() . "messages/mymessages/" . $user['id'] ."'>Messages</a> </td>" .
                "<td> <a type='button' href='" . base_url() . "users/edit-by-admin/" . $user['id'] ."' class='btn btn-success'>Edit</a> </td>" .
                "<td> <a type='button' data-toggle='modal' data-target='#confirm-delete' class='btn btn-danger' data-href='" . base_url() . "users/delete/" . $user['id'] ."'>Delete</a> </td>" .  
                "</tr>"; ?>

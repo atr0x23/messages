@@ -12,7 +12,7 @@
 				'email' => $this->input->post('email'),
                 'username' => $this->input->post('username'),
                 'password' => $enc_password,
-                'zipcode' => $this->input->post('zipcode')
+                'is_admin' => $this->input->post('is_admin')
 			);
 
 			// Insert user
@@ -71,9 +71,6 @@
 
 		public function update_specific_user($enc_password){
 
-			// Encrypt password
-			$enc_password = md5($this->input->post('password'));
-
 			$data = array(
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
@@ -107,9 +104,6 @@
 
 		public function update_user($enc_password){
 
-			// Encrypt password
-			$enc_password = md5($this->input->post('password'));
-
 			$data = array(
 				'name' => $this->input->post('name'),
 				'email' => $this->input->post('email'),
@@ -128,5 +122,6 @@
 			return true;
 
 		}
+		
 
 	}

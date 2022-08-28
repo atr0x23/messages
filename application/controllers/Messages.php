@@ -1,8 +1,13 @@
 <?php
 	class Messages extends CI_Controller{
 		
-		//view messages
+		//view all messages
 		public function index(){
+			
+						// Check login
+			// if(!$this->session->userdata('logged_in')){
+			// 	redirect('users/login');
+			// }
 
 			$data['title'] = 'Latest Messages';
 
@@ -15,6 +20,11 @@
 
 		//create messages
 		public function create(){
+
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
 
 			$data['title'] = 'Create new message';
 
@@ -31,17 +41,23 @@
 			// Set message
 			$this->session->set_flashdata('message_submited', 'Your message has been submited');
 			//after the create go to messages
-			redirect('messages');
+			redirect('messages/mymessages');
 
 		}
 		}
 
-		//view only the messages of loged in user
+		//view only the messages of logged-in user
 		public function mymessages(){
 
+			// Check login
+			if(!$this->session->userdata('logged_in')){
+				redirect('users/login');
+			}
 			$data['title'] = 'My Latest Messages';
 
 			$data['messages'] = $this->message_model->get_mymessages();
+
+			//if(!empty($data['messages'])){ echo "not empty";} else{echo "it is empty";}
 
 			$this->load->view('templates/header');
 			$this->load->view('messages/mymessages', $data);

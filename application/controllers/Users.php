@@ -21,7 +21,7 @@
 				$this->user_model->register($enc_password);
 
 				// Set message
-				$this->session->set_flashdata('user_registered', 'You are now registered and can log in');
+				$this->session->set_flashdata('user_registered', 'You registration completed! Now you Sign in');
 
 				redirect('users/login');
 			}
@@ -64,7 +64,7 @@
 					redirect('messages/create');
 				} else {
 					// Set message
-					$this->session->set_flashdata('login_failed', 'Login is invalid');
+					$this->session->set_flashdata('login_failed', 'Wrong username or password, please try again.');
 
 					redirect('users/login');
 				}		
@@ -108,9 +108,9 @@
 		public function show(){
 
 			// Check login
-			if(!$this->session->userdata('logged_in')){
-				redirect('users/login');
-			}
+			// if(!$this->session->userdata('logged_in')){
+			// 	redirect('users/login');
+			// }
 
 			$data['title'] = 'Registered Users';
 
@@ -156,7 +156,7 @@
 		// Store into database the new infos of user
 		public function update(){
 
-			$data['title'] = 'make the update';
+			//$data['title'] = 'make the update';
 
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
@@ -166,13 +166,16 @@
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');
-				$this->load->view('users/my-profile-edit', $data);
+				$this->load->view('users/my-profile-edit');
 				$this->load->view('templates/footer');
 			} else {
 
+				// password encryption
+			$enc_password = md5($this->input->post('password'));
+
 			$this->user_model->update_user($enc_password);
 
-			// Set message
+			// Set notification
 			$this->session->set_flashdata('user_updated', 'Your profile has been updated');
 
 			redirect('users/my-profile-edit');
@@ -219,6 +222,8 @@
 				$this->load->view('templates/footer');
 			} else {
 
+			// password encryption
+			$enc_password = md5($this->input->post('password'));
 			$this->user_model->update_specific_user($enc_password);
 
 			// Set message
@@ -234,4 +239,5 @@
 			redirect('users');
 
 		}
+
 }

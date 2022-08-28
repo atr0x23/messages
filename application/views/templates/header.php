@@ -39,23 +39,9 @@
             <a class="nav-link" href="<?php echo base_url(); ?>messages/create">New message</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>messages">Message-History</a>
+            <a class="nav-link" href="<?php echo base_url(); ?>messages/mymessages">Message-History</a>
           </li>
         <?php endif; ?>
-
-              <!-- Dropdown Menu --
-              
-                <li class="nav-item dropdown show">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Edit/Create</a>
-
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="">Create Post</a>
-                <a class="dropdown-item" href="">Create Category</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-
-            </li> -->
       </ul>
 
       <!-- navbar right side -->
