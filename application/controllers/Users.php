@@ -231,7 +231,7 @@
 
 			if($this->form_validation->run() === FALSE){
 				$this->load->view('templates/header');
-				$this->load->view('users/edit-by-admin', $data);
+				$this->load->view('users/edit-by-admin');
 				$this->load->view('templates/footer');
 			} else {
 
