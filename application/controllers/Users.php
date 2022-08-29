@@ -97,6 +97,7 @@
 				} else {
 
 					$this->session->set_flashdata('forgot_password_invalid_email', 'Ooops, the email you entered, did not found!');
+					redirect('users/password-reset');
 				}
 			}
 		}
