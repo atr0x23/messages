@@ -34,6 +34,20 @@
 			}
 		}
 
+		// Forgot password functionality
+		public function forgot_password($email){
+
+			// Validate
+			$this->db->where('email', $email);
+			$result = $this->db->get('users'); 
+			
+			if($result->num_rows() == 1){
+				return $result->row(0)->email;
+			} else {
+				return false;
+			}
+		}
+
 		// Check username exists
 		public function check_username_exists($username){
 			$query = $this->db->get_where('users', array('username' => $username));

@@ -1,17 +1,18 @@
-<?php echo form_open(''); ?>
-	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
-			<h1 class="text-center"><?php echo $title; ?></h1>
+        <h2><?php echo $title; ?></h2>
+            <p>An email will be send to you with instructions on how to reset your passwrod.</p>
 
+            <?php echo form_open('users/password_reset'); ?>
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
 
-			<div class="form-group">
-				<input type="password" name="password" class="form-control" placeholder="Enter Password" required autofocus>
-			</div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Enter you email" required autofocus>
+                        </div>
 
-			<button type="submit" class="btn btn-primary btn-block">Submit</button>
-		</div>
+                        <button type="submit" class="btn btn-primary btn-block">Send the reset link</button>
 
+                    </div>
 
-		<h4 class="text-center"><a href="users/password-reset">Forgot your password?</a></h4>
-	</div>
-<?php echo form_close(); ?>
+                    
+                </div>
+            <?php echo form_close(); ?>
