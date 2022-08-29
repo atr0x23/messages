@@ -18,18 +18,7 @@ $route['messages/mymessages-adminview'] = 'messages/mymessagesadmin'; //shows on
 $route['messages/mymessages-adminview/(:any)'] = 'messages/mymessagesadmin'; //shows only the messages of selected user by the admin
 $route['messages/create'] = 'messages/create';
 
-//Routes for the posts
-$route['posts/index'] = 'posts/index';
-$route['posts/create'] = 'posts/create';
-$route['posts/update'] = 'posts/update';
-$route['posts/(:any)'] = 'posts/view/$1';
-$route['posts'] = 'posts/index';
-
 $route['default_controller'] = 'users/login';
-
-$route['categories'] = 'categories/index';
-$route['categories/create'] = 'categories/create';
-$route['categories/posts/(:any)'] = 'categories/posts/$1';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['404_override'] = '';
