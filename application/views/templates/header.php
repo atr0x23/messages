@@ -91,6 +91,10 @@
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
       <?php endif; ?>
 
+      <?php if($this->session->flashdata('forgot_password_invalid_email')): ?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('forgot_password_invalid_email').'</p>'; ?>
+      <?php endif; ?>
+
       <?php if($this->session->flashdata('message_submited')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('message_submited').'</p>'; ?>
       <?php endif; ?>

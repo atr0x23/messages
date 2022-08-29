@@ -76,11 +76,29 @@
 		//Forgot password feature
 		public function password_reset(){
 
-			$data['title'] = 'Reset your password';			
+			$data['title'] = 'Reset your password';
+			
+			$this->form_validation->set_rules('email', 'Email', 'required');
 
-			$this->load->view('templates/header');
-			$this->load->view('users/password-reset', $data);
-			$this->load->view('templates/footer');
+			if($this->form_validation->run() === FALSE){
+				$this->load->view('templates/header');
+				$this->load->view('users/password-reset', $data);
+				$this->load->view('templates/footer');
+			}else {
+
+				//get the email
+				$email = $this->input->post('email');
+
+				$findemail = $this->user_model->forgot_password($email);
+
+				if($findemail){
+
+
+				} else {
+
+					$this->session->set_flashdata('forgot_password_invalid_email', 'Ooops, the email you entered, did not found!');
+				}
+			}
 		}
 
 
