@@ -223,13 +223,6 @@
 		//for the admin user
 		public function update_specific(){
 
-						// Check login
-						if(!$this->session->userdata('logged_in')){
-							redirect('users/login');
-						}
-
-			$data['title'] = 'make the update';
-
 			$this->form_validation->set_rules('name', 'Name', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required|callback_check_email_exists');
 			$this->form_validation->set_rules('username', 'Username', 'required|callback_check_username_exists');
