@@ -73,7 +73,7 @@
 			}
 		}
 
-		//Forgot password feature
+		//=====================  Forgot password feature  ==============================
 		public function password_reset(){
 
 			$data['title'] = 'Reset your password';
@@ -167,6 +167,7 @@
 
 		 }
 
+		 //=====================  END    Forgot password feature  ============================== //
 
 
 		// Log user out

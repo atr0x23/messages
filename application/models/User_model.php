@@ -34,7 +34,8 @@
 			}
 		}
 
-		// Forgot password functionality
+
+		// ******************* Forgot password functionality ******************
 		public function forgot_password($email){
 
 			// Validate
@@ -49,11 +50,40 @@
 			}
 		}
 
+		public function getHashDetails($hash){
+
+			// Validate
+			$this->db->where('hash_key', $hash);
+			$result = $this->db->get('users'); 
+			
+			if($result->num_rows() == 1){
+				return $result->row();
+			} else {
+				return false;
+			}
+		}
+
 		public function updatePasswordhash($data,$email){
 
 			$this->db->where('email',$email);
 			$this->db->update('users',$data);
 		}
+
+		public function validateCurrentPassword($currentPassword, $hash){
+			$query = $this->db->query("SELECT * FROM users WHERE password='$currentPassword' AND hash_key='$hash'");
+			if($query->num_rows() == 1){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function updateNewPassword($data, $hash){
+
+			$this->db->where('hash_key', $hash);
+			$this->db->update('users', $data);
+		 }
+
 
 		// Check username exists
 		public function check_username_exists($username){

@@ -7,7 +7,8 @@ $route['users/show'] = 'users/show';
 $route['users/my-profile-edit'] = 'users/edit'; //to update user profile
 $route['users/edit-by-admin/(:any)'] = 'users/edit_specific'; //to update user's profile as admin
 $route['users/password-reset'] = 'users/password_reset';
-
+$route['users/enter_new_pass'] = 'users/password';
+$route['reset/password(:any)'] = 'reset/password';
 
 //Routes for the messages
 $route['messages'] = 'messages/index'; //shows all messages

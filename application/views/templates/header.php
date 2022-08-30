@@ -97,6 +97,14 @@
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('forgot_password_invalid_email').'</p>'; ?>
       <?php endif; ?>
 
+      <?php if($this->session->flashdata('success_change_pass')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('success_change_pass').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('error_wrong_current_pass')): ?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('error_wrong_current_pass').'</p>'; ?>
+      <?php endif; ?>
+
       <!-- email for password reset -->
       <?php if($this->session->flashdata('succes_sending_email')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('succes_sending_email').'</p>'; ?>
