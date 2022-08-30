@@ -42,10 +42,17 @@
 			$result = $this->db->get('users'); 
 			
 			if($result->num_rows() == 1){
-				return $result->row(0)->email;
+				//return $result->row(0)->email;
+				return $result->row();
 			} else {
 				return false;
 			}
+		}
+
+		public function updatePasswordhash($data,$email){
+
+			$this->db->where('email',$email);
+			$this->db->update('users',$data);
 		}
 
 		// Check username exists

@@ -91,7 +91,38 @@
 
 				$findemail = $this->user_model->forgot_password($email);
 
-				if($findemail){
+				if($findemail!=false){
+
+					$row = $findemail;
+					$user_id = $row->id;
+
+					$string = time().$user_id.$email;
+					$hash_string = hash('sha256', $string);
+					$currentDate= date('Y-m-d H:i');
+					$hash_expiry = date('Y-m-d H:i',strtotime($currentDate. '+ 1 days'));
+					$data = array(
+						'hash_key' => $hash_string,
+						'hash_expiry' => $hash_expiry,
+					);
+
+					
+					$resetLink = base_url() . 'reset/password?hash=' . $hash_string;
+					//echo $resetLink;
+					$message = '<p> Your reset password Link is here:</p>' . $resetLink;
+					$subject = "Password Reset Link";
+					$sentStatus = $this->sendEmail($email,$subject,$message);
+
+					if($sentStatus){
+
+						//$this->user_model->updatePasswordhash($data,$email);
+						$this->user_model->updatePasswordhash($data,$email);
+						$this->session->set_flashdata('succes_sending_email', 'the reset link successfully sent');
+						redirect(base_url('users/password-reset'));
+
+					} else{
+
+						$this->session->set_flashdata('sending_error_email', 'email sending error');
+					}
 
 
 				} else {
@@ -101,6 +132,40 @@
 				}
 			}
 		}
+
+		// send email from localhost using gmail
+
+		public function sendEmail($email,$subject,$message){
+
+			$config = array(
+				'protocol' => 'smtp',
+				'smtp_host' => 'ssl://smtp.gmail.com',
+				'smtp_auth' => true,
+				'smtp_user' => 'thanos.trompoukis@coffeebrands.gr',
+				'smtp_pass' => '@xulokastro1!',
+				'mailtype' => 'html',
+				'smtp_port' => 465,
+				'charset' => 'iso-8859-1',
+				'wordwrap' =>  true,
+			);
+
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
+			$this->email->from('noreply');
+			$this->email->to($email);
+			$this->email->subject($subject);
+			$this->email->message($message);
+			
+			if($this->email->send())
+		   {
+			 return true;
+		   }
+		   else
+		   {
+			   return false;
+		   }
+
+		 }
 
 
 
@@ -114,7 +179,7 @@
 			// Set message
 			$this->session->set_flashdata('user_loggedout', 'You are now logged out');
 
-			redirect('users/login');
+			redirect('/');
 		}
 
 		// Check if username exists

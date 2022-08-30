@@ -53,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
 
           <?php if(!$this->session->userdata('logged_in')) : ?>
-              <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/login">Login</a></li>
+              <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>">Login</a></li>
               <li class="nav-item"><a class="nav-link" href="<?php echo base_url(); ?>users/register">Register</a></li>
             <?php endif; ?>
             <?php if($this->session->userdata('logged_in')) : ?>
@@ -67,6 +67,7 @@
     <div class="container">
       <!-- Flash messages -->
       
+      <!-- notifications for user -->
       <?php if($this->session->flashdata('user_registered')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
       <?php endif; ?>
@@ -87,6 +88,7 @@
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_updated_byadmin').'</p>'; ?>
       <?php endif; ?>
 
+      <!-- Login notifications & Forgot Password-->
       <?php if($this->session->flashdata('login_failed')): ?>
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('login_failed').'</p>'; ?>
       <?php endif; ?>
@@ -95,26 +97,16 @@
         <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('forgot_password_invalid_email').'</p>'; ?>
       <?php endif; ?>
 
+      <!-- email for password reset -->
+      <?php if($this->session->flashdata('succes_sending_email')): ?>
+        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('succes_sending_email').'</p>'; ?>
+      <?php endif; ?>
+
+      <?php if($this->session->flashdata('sending_error_email')): ?>
+        <?php echo '<p class="alert alert-danger">'.$this->session->flashdata('sending_error_email').'</p>'; ?>
+      <?php endif; ?>
+
+      <!-- notifications for messages -->
       <?php if($this->session->flashdata('message_submited')): ?>
         <?php echo '<p class="alert alert-success">'.$this->session->flashdata('message_submited').'</p>'; ?>
-      <?php endif; ?>
-
-      <?php if($this->session->flashdata('post_created')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_created').'</p>'; ?>
-      <?php endif; ?>
-
-      <?php if($this->session->flashdata('post_updated')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_updated').'</p>'; ?>
-      <?php endif; ?>
-
-      <?php if($this->session->flashdata('post_deleted')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('post_deleted').'</p>'; ?>
-      <?php endif; ?>
-
-      <?php if($this->session->flashdata('category_created')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_created').'</p>'; ?>
-      <?php endif; ?>
-
-      <?php if($this->session->flashdata('category_deleted')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('category_deleted').'</p>'; ?>
       <?php endif; ?>
