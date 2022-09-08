@@ -204,15 +204,24 @@
 		}
 
 		//show ALL users
-		public function show(){
+		public function show($offset = 0){
 
 			// Check login
 			if($this->session->userdata('logged_in') && $this->session->userdata('user_id') == 14){
 
+							// Pagination 
+			$config['base_url'] = base_url() . 'users/show/';
+			$config['total_rows'] = $this->db->count_all('users');
+			$config['per_page'] = 4;
+			$config['uri_segment'] = 3;
+
+			//Init the pagination
+			$this->pagination->initialize($config);
+
 			//since passes the check can go on and show all users feature		
 			$data['title'] = 'Registered Users';
 
-			$data['users'] = $this->user_model->get_users();
+			$data['users'] = $this->user_model->get_users($config['per_page'], $offset);
 
 			$this->load->view('templates/header');
 			$this->load->view('users/show', $data);

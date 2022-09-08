@@ -106,7 +106,11 @@
 		}
 
 		//Get all users (only available for admin)
-		public function get_users(){
+		public function get_users($limit = FALSE, $offset = FALSE){
+
+			if($limit){
+                $this->db->limit($limit, $offset);
+            }
 	
 				$query = $this->db->get('users'); 
 				return $query->result_array();

@@ -32,6 +32,7 @@
 
     </tbody>
   </table>
+  <?php echo $this->pagination->create_links(); ?>
 
 
   <!-- modal for deletions -->

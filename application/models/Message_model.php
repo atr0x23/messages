@@ -5,17 +5,17 @@
             $this->load->database();
         }
 
-        public function get_messages($slug = FALSE){
-            if($slug === FALSE){
-                $this->db->order_by('id', 'DESC');
-                $query = $this->db->get('messages');
-                return $query->result_array();
-            }
+        // public function get_messages($slug = FALSE){
+        //     if($slug === FALSE){
+        //         $this->db->order_by('id', 'DESC');
+        //         $query = $this->db->get('messages');
+        //         return $query->result_array();
+        //     }
 
-            $query = $this->db->get_where('messages', array('slug' => $slug));
+        //     $query = $this->db->get_where('messages', array('slug' => $slug));
 
-            return $query->row_array();
-        }
+        //     return $query->row_array();
+        // }
 
         public function get_mymessages(){
 
