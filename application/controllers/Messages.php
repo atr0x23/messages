@@ -1,22 +1,5 @@
 <?php
 	class Messages extends CI_Controller{
-		
-		//view all messages
-		// public function index(){
-			
-		// 				// Check login
-		// 	if(!$this->session->userdata('logged_in')){
-		// 		redirect('users/login');
-		// 	}
-
-		// 	$data['title'] = 'Latest Messages';
-
-        //     $data['messages'] = $this->message_model->get_messages();
-
-		// 	$this->load->view('templates/header');
-		// 	$this->load->view('messages/index', $data);
-		// 	$this->load->view('templates/footer');
-		// }
 
 		//create messages
 		public function create(){
