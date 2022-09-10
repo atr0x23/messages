@@ -12,7 +12,7 @@ $route['reset/password(:any)'] = 'reset/password';
 
 //Routes for the messages
 $route['messages/mymessages'] = 'messages/mymessages'; //shows only the messages of loged in user
-$route['messages/mymessages/(:any)'] = 'messages/mymessages'; //shows only the messages of loged in user
+$route['messages/mymessages/(:num)'] = 'messages/mymessages'; //shows only the messages of loged in user
 $route['messages/mymessages-adminview'] = 'messages/mymessagesadmin'; //shows only the messages of selected user by the admin
 $route['messages/mymessages-adminview/(:any)'] = 'messages/mymessagesadmin'; //shows only the messages of selected user by the admin
 $route['messages/create'] = 'messages/create';

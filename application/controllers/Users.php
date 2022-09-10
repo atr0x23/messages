@@ -214,6 +214,7 @@
 			$config['total_rows'] = $this->db->count_all('users');
 			$config['per_page'] = 4;
 			$config['uri_segment'] = 3;
+			$config['attributes'] = array('class' => 'pagination-link');
 
 			//Init the pagination
 			$this->pagination->initialize($config);

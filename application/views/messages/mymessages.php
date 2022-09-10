@@ -2,7 +2,6 @@
 
     <?php foreach($messages as $message) : ?>
     
-
     <div id="accordion">
         <div class="card">
             <div class="card-header">
@@ -18,3 +17,6 @@
     </div>
     
     <?php endforeach; ?>
+    <div class="pagination-links">
+        <?php echo $links; ?>
+    </div>   

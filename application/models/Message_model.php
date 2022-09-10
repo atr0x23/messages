@@ -5,14 +5,29 @@
             $this->load->database();
         }
 
-        public function get_mymessages(){
+        public function get_mymessages($limit = FALSE, $offset = FALSE){
 
             $current_user = $this->session->userdata('user_id');
+
+            if($limit){
+                $this->db->limit($limit, $offset);
+            }
 
             $this->db->order_by('id', 'DESC');
 			$query = $this->db->get_where('messages', array('user_id' => $current_user));
             return $query->result_array(); 
         }
+
+        public function get_count() {
+            
+            $current_user = $this->session->userdata('user_id');
+			$query = $this->db->get_where('messages', array('user_id' => $current_user));
+            return $query->num_rows(); 
+
+            return count($query);
+        }
+
+
 
         public function get_mymessages_admin(){
 
